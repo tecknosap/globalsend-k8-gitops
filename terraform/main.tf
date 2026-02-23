@@ -1,3 +1,4 @@
+#testing git
 resource "kind_cluster" "globalsend" {
   name           = "gitops-kind"
   wait_for_ready = true

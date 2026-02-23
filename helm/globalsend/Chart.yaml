@@ -1,0 +1,5 @@
+apiVersion: v2
+name: globalsend
+description: Helm chart for deploying the GlobalSend app
+version: 0.1.0
+appVersion: "v3"
