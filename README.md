@@ -32,10 +32,10 @@ Local Development → GitHub → GitHub Actions → Terraform → KIND Cluster �
 
 ---
 
+---
 ### Fraud Dashboard
 
-
-![Fraud Dashboard](./assets/froudapp.png)     
+![Fraud Dashboard](./assets/froudapps.png)     
 
 ---
 
