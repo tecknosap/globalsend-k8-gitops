@@ -1,3 +1,10 @@
+########################
+# GlobalSend application deployment values
+# - Container image: tecknosap/globalsend-site:v3
+# - Always pull latest image
+# - Single replica
+# - Expose via LoadBalancer on port 80
+########################
 image:
   repository: tecknosap/globalsend-site
   tag: v3

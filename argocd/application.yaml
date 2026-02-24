@@ -1,3 +1,9 @@
+########################
+# Argo CD Application for GlobalSend
+# - Deploys Helm chart from GitOps repo
+# - Targets 'globalsend' namespace (must exist beforehand)
+# - Automated sync with prune and self-heal enabled
+########################
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,8 +19,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: globalsend
-    createNamespace: true   # <--- added this line
+    namespace: globalsend  # <--- removed createNamespace
 
   syncPolicy:
     automated:

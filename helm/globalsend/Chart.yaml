@@ -1,3 +1,9 @@
+########################
+# Helm chart metadata for GlobalSend application
+# - Name: globalsend
+# - Version: 0.1.0
+# - App version: v3
+########################
 apiVersion: v2
 name: globalsend
 description: Helm chart for deploying the GlobalSend app

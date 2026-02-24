@@ -1,4 +1,8 @@
-# Create namespace for Argo CD
+########################
+# Argo CD namespace
+# - Isolates Argo CD resources
+# - Depends on local Globalsend KIND cluster
+########################
 resource "kubernetes_namespace" "argocd" {
   metadata {
     name = "argocd"
@@ -9,7 +13,12 @@ resource "kubernetes_namespace" "argocd" {
   ]
 }
 
-# Install Argo CD with Helm
+########################
+# Deploy Argo CD via Helm
+# - ClusterIP service for the server
+# - Deploys to 'argocd' namespace
+# - Version 5.51.6
+########################
 resource "helm_release" "argocd" {
   name       = "argocd"
   namespace  = kubernetes_namespace.argocd.metadata[0].name
@@ -32,7 +41,11 @@ resource "helm_release" "argocd" {
   ]
 }
 
-# Get the Argo CD initial admin password
+########################
+# Fetch Argo CD initial admin password
+# - Stored as Kubernetes secret by Helm chart
+# - Required for first login
+########################
 data "kubernetes_secret" "argocd_initial_password" {
   metadata {
     name      = "argocd-initial-admin-secret"
@@ -42,15 +55,4 @@ data "kubernetes_secret" "argocd_initial_password" {
   depends_on = [
     helm_release.argocd
   ]
-}
-
-# Output the Argo CD admin password
-output "argocd_admin_password" {
-  value     = nonsensitive(data.kubernetes_secret.argocd_initial_password.data["password"])
-  description = "Argo CD initial admin password"
-}
-
-# Output command to port-forward Argo CD UI
-output "argocd_port_forward" {
-  value = "kubectl port-forward svc/argocd-server -n argocd 8080:443"
 }

@@ -1,4 +1,8 @@
-#testing git
+########################
+# Local Globalsend KIND cluster
+# - 1 control-plane node, 1 worker node
+# - Serves as the Kubernetes environment for GitOps
+########################
 resource "kind_cluster" "globalsend" {
   name           = "gitops-kind"
   wait_for_ready = true
@@ -16,5 +20,3 @@ resource "kind_cluster" "globalsend" {
     }
   }
 }
-
-

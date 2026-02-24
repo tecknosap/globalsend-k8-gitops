@@ -1,3 +1,10 @@
+########################
+# Deployment for GlobalSend application
+# - Replica count configurable via Helm values
+# - Uses container image and pull policy from Helm values
+# - Pods labeled 'app: globalsend'
+# - Exposes container port 80
+########################
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,3 +1,9 @@
+########################
+# Kubernetes Service for GlobalSend app
+# - Type and port configurable via Helm values
+# - Routes traffic to pods labeled 'app: globalsend'
+# - TargetPort fixed at 80
+########################
 apiVersion: v1
 kind: Service
 metadata:

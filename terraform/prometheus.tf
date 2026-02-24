@@ -1,5 +1,9 @@
-
-# Deploy Prometheus stack, auto-scraping cluster metrics
+########################
+# Deploy Prometheus stack with Grafana and Alertmanager
+# - Installs kube-prometheus-stack via Helm
+# - Exposes Prometheus service as NodePort
+# - Deploys to 'monitoring' namespace
+########################
 resource "helm_release" "prometheus" {
   name      = "prometheus"
   namespace = kubernetes_namespace.monitoring.metadata[0].name
@@ -15,16 +19,18 @@ resource "helm_release" "prometheus" {
           serviceMonitorSelectorNilUsesHelmValues = false
           serviceMonitorSelector = {}  # select all ServiceMonitors
           podMonitorSelector     = {}  # select all PodMonitors
-          service = { type = "NodePort" } # optional NodePort
+          service = { type = "NodePort" }
         }
       }
-      grafana = { enabled = true }  # skip Grafana
+      grafana = { enabled = true }
       alertmanager = { enabled = true }
     })
   ]
 }
 
-# Get Prometheus service info
+########################
+# Get Prometheus service details for NodePort access
+########################
 data "kubernetes_service" "prometheus" {
   metadata {
     name      = "prometheus-kube-prometheus-prometheus"
@@ -32,15 +38,4 @@ data "kubernetes_service" "prometheus" {
   }
 
   depends_on = [helm_release.prometheus]
-}
-
-# Outputs
-output "prometheus_nodeport" {
-  value       = data.kubernetes_service.prometheus.spec[0].port[0].node_port
-  description = "NodePort for accessing Prometheus"
-}
-
-output "prometheus_url" {
-  value       = "http://localhost:${data.kubernetes_service.prometheus.spec[0].port[0].node_port}"
-  description = "URL to access Prometheus"
 }
