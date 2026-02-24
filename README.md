@@ -128,10 +128,10 @@ terraform apply -auto-approve  # Creates KIND cluster, namespaces, monitoring
 * Monitor deployments in Argo CD UI
 
 **Access Services**
-
-* Prometheus: `http://localhost:<prometheus_nodeport>`
-* Grafana: `http://localhost:<grafana_nodeport>`
-* GlobalSend App: `http://localhost:<globalsend_nodeport>`
+* port-forward svc/argocd-server -n argocd 8080:443
+* Prometheus: `kubectl port-forward -n monitoring svc/prometheus-kube-prometheus-prometheus 9090:9090`
+* Grafana: `kubectl port-forward svc/grafana -n monitoring 3000:80`
+* GlobalSend App: ` kubectl port-forward svc/globalsend -n globalsend 8081:80                             `
 
 ---
 
