@@ -10,6 +10,8 @@ GlobalSend Kubernetes GitOps Deployment provides a fully automated workflow for 
 
 The deployment includes monitoring via Prometheus and Grafana, enabling observability and metrics collection from all services. Helm charts are used for packaging and deploying both core application and monitoring components.  
 
+Note: The GlobalSend application image is hosted on Docker Hub: tecknosap/globalsend-site:v3. Helm charts pull this image during deployment.
+
 **Highlights:**  
 - Automated GitOps deployment of GlobalSend application  
 - Local KIND cluster for development and testing  
