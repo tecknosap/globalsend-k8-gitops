@@ -75,22 +75,29 @@ Local Development → GitHub → GitHub Actions → Terraform → KIND Cluster �
 🗂 **Project Structure**  
 
 ```
-globalsend-k8-gitops/
-├── helm/globalsend/           # Helm chart for GlobalSend app
-│   ├── Chart.yaml
-│   ├── values.yaml
-│   └── templates/
-│       ├── deployment.yaml
-│       ├── service.yaml
-│       └── namespace.yaml
-├── terraform/                 # Infrastructure as Code
-│   ├── main.tf
-│   └── modules/
-│       ├── kind/
-│       └── monitoring/
-├── .github/workflows/         # CI/CD pipeline
-│   └── deploy.yml
-└── README.md
+🗂 globalsend-k8-gitops/
+├── argocd/                   # Argo CD Application manifests
+│   ├── application.yaml      # Argo CD Application resource
+│   └── namespace.yaml        # Namespace manifest for Argo CD-managed resources
+├── assets/                   # Documentation and reference images
+├── helm/                     # Helm chart for GlobalSend application
+│   └── globalsend/
+│       ├── Chart.yaml        # Helm chart metadata
+│       ├── values.yaml       # Default chart values
+│       └── templates/        # Kubernetes manifests templates
+│           ├── deployment.yaml  # Deployment spec for GlobalSend
+│           └── service.yaml     # Service spec for GlobalSend
+├── terraform/                # Terraform Infrastructure as Code
+│   ├── main.tf               # Main configuration file
+│   ├── providers.tf          # Terraform providers setup
+│   ├── outputs.tf            # Output definitions
+│   ├── variables.tf          # Input variable definitions
+│   ├── prometheus.tf         # Prometheus monitoring stack
+│   ├── gravana.tf            # Grafana monitoring stack
+│   ├── argocd.tf             # Argo CD namespace and resources
+│   ├── gitops-kind-config    # KIND cluster configuration
+│   └── namespace.tf          # Cluster namespace definitions
+└── README.md                 # Project documentation
 
 ```
 
