@@ -28,3 +28,13 @@ provider "helm" {
     config_path = var.kubeconfig_path
   }
 }
+
+
+provider "helm" {
+  alias = "kind"
+
+  kubernetes {
+    config_path = var.kubeconfig_path
+  }
+}
+
