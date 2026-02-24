@@ -1,6 +1,3 @@
-
-
-```markdown
 🌐 GlobalSend Kubernetes GitOps Deployment - local lab
 Automated Multi‑Environment Deployment | Helm, KIND, Terraform, Argo CD, Prometheus, Grafana  
 
@@ -78,7 +75,6 @@ Local Development → GitHub → GitHub Actions → Terraform → KIND Cluster �
 🗂 **Project Structure**  
 
 ```
-
 globalsend-k8-gitops/
 ├── helm/globalsend/           # Helm chart for GlobalSend app
 │   ├── Chart.yaml
@@ -96,7 +92,7 @@ globalsend-k8-gitops/
 │   └── deploy.yml
 └── README.md
 
-````
+```
 
 ---
 
@@ -111,7 +107,7 @@ globalsend-k8-gitops/
 📝 **Usage**  
 
 **Local Development**  
-```bash
+
 git clone <repo-url>
 cd globalsend-k8-gitops
 terraform init
