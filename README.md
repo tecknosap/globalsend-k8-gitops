@@ -26,7 +26,7 @@ The deployment includes monitoring via Prometheus and Grafana, enabling observab
 Local Development → GitHub → GitHub Actions → Terraform → KIND Cluster → Argo CD → Helm Charts → Prometheus/Grafana → GlobalSend App  
 
 ### Architecture Diagram
-![Architecture Diagram](./assets/gs-gitops.png)    
+![Architecture Diagram](./assets/gitops.png)    
 
 
 
