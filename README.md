@@ -57,13 +57,11 @@ Local Development → GitHub → GitHub Actions → Terraform → KIND Cluster �
 
 ---
 
-🔧 **Multi‑Environment Strategy**  
+🔧 **Environment Strategy**  
 
-| Environment | Branch  | Deployment Trigger |
-|-------------|---------|------------------|
-| Development | dev     | Push to dev       |
-| Staging     | staging | Merge dev → staging |
-| Production  | main    | Merge staging → main via GitOps |
+| Environment              | Branch | Deployment Trigger |
+|--------------------------|--------|--------------------|
+| Local / Production-like  | main   | Push / merge to main (Argo CD GitOps sync) |
 
 **Pipeline Features:**  
 - Automatic environment detection from branch  
