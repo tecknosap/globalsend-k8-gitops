@@ -123,10 +123,24 @@ terraform init
 terraform apply -auto-approve  # Creates KIND cluster, namespaces, monitoring
 ````
 
-**Deploy Application via Argo CD**
 
+**Commit app configurations to github**
+* git add .
+* git commit -m "your message"
+* git push origin main
+
+
+
+**Deploy Application via Argo CD**
+ 
 * Ensure `globalsend` namespace exists
+  *kubectl create namespace globalsend   
+
+* Deploy the argocd application
+  * kubectl apply -f argocd/application.yaml
+
 * Argo CD Application will sync Helm chart to cluster
+
 * Monitor deployments in Argo CD UI
 
 **Access Services**
